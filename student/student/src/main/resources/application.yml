@@ -4,3 +4,18 @@ spring:
     name: students
   config:
     import: optional:configserver:http://localhost:8888
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  influx:
+    metrics:
+      export:
+        api-version: v2  # İŞTE EKSİK OLAN SİHİRLİ SATIR BU!
+        enabled: true
+        uri: http://localhost:8086
+        org: aiops-org # InfluxDB'de oluşturduğun tam Organizasyon adın
+        bucket: microservices-metrics # InfluxDB'de oluşturduğun tam Bucket adın
+        token: GAX9iV7RBZNLhTCuYY_Sf7TJ24R8-UM2pm48olI3hOC0FzMAS3L6x3bPciZTlSoG2Org--P-q9ANoD-AYNeo4A==
+        step: 10s # Saniyeler içinde grafikleri görmek için 10 saniyede bir veri göndersin
